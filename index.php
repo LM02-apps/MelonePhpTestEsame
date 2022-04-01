@@ -1,19 +1,14 @@
 <?php
-
-$servername='127.0.0.1';
-$username='root';
-$password='';
-$dbname="agenzia";
-
-
-$conn =mysqli_connect($servername, $username, $password, "agenzia");
+include "database.php";
 $sql="SELECT indirizzo FROM appartamenti";
 $result= mysqli_query($conn,$sql);
-echo "<table border=1px solid black>";
+//echo "<table border=1px solid black>";
+echo "<form action='appartamento.php' method='POST'>";
 
 while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
-    echo "<tr><td>". htmlspecialchars($row['indirizzo'] . "</td>");
+    echo htmlspecialchars($row['indirizzo']);
 }
-echo "</table>";
+
+//echo "</table>";
 ?>
