@@ -1,4 +1,12 @@
+<html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js.js"></script>
+    </head>
+</html>
+
 <?php
+
 include "database.php";
 $sql="SELECT codice,indirizzo FROM appartamenti";
 $result= mysqli_query($conn,$sql);
@@ -8,12 +16,12 @@ echo "<form action='appartamento.php' method='POST'>";
 
 while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
-    $codice=htmlspecialchars($row['codice']);
-    echo "<select multiple name='id[]'>"
-    echo "<option value='".$codice."'>".htmlspecialchars($row['indirizzo'])."</option>";
-    echo "<input type='submit' value='Visualizza'>";
+    
+    echo htmlspecialchars($row['indirizzo']);
+    echo "<input type='submit' name='get' id='".$row['codice'] ."' value='Visualizza'><br><br>";
+    echo "<input type='hidden' name='test' class='send' value=''>";
+    
 }
 echo "</form>";
 
-//echo "</table>";
 ?>
